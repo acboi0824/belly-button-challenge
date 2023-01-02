@@ -2,7 +2,7 @@
 function charts(subjectID) {
 
     // use d3 library to read in samples.json
-    d3.json("data/samples.json").then(data => {
+    d3.json("../../data/samples.json").then(data => {
         // test to see all data from url worked
         console.log(data);
 
@@ -79,7 +79,7 @@ function displayDemoInfo(subjectID) {
     
     var demoInfoBox = d3.select("#sample-metadata");
 
-    d3.json("data/samples.json").then(data => {
+    d3.json("../../data/samples.json").then(data => {
 
         var metadata = data.metadata
 
@@ -104,7 +104,7 @@ function optionChanged(subjectID) {
 // use this function to initialize the dropdown, charts and demographic info tables
 function initDashboard() {
     var dropdown = d3.select("#selDataset")
-    d3.json("data/samples.json").then(data => {
+    d3.json("../../data/samples.json").then(data => {
         var subjectIDs = data.names;
         subjectIDs.forEach(subjectID => {
             dropdown.append("option").text(subjectID).property("value", subjectID)
