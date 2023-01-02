@@ -20,7 +20,17 @@ function charts(subjectID) {
         // BAR CHART
         // Create the plots
         var bar_data = [{
-
+            // Use otu_ids for the x values
+            x: sample_values.slice(0, 10).reverse(),
+            // Use sample_values for the y values
+            y: otu_ids.slice(0, 10).map(otu_id => `OTU ${otu_id}`).reverse(),
+            // Use otu_labels for the text values
+            text: otu_labels.slice(0, 10).reverse(),
+            type: 'bar',
+            orientation: 'h',
+            // marker: {
+            //     color: 'rgb(242, 113, 102)'
+            // },
         }]
 
         var bar_layout = {
@@ -33,12 +43,31 @@ function charts(subjectID) {
 
 
         // BUBBLE CHART
-        // Create the plots
+        // Create the trace
         var bubble_data = [{
- 
+            // Use otu_ids for the x values
+            x: otu_ids,
+            // Use sample_values for the y values
+            y: sample_values,
+            // Use otu_labels for the text values
+            text: otu_labels,
+            mode: 'markers',
+            marker: {
+                // Use otu_ids for the marker colors
+                color: otu_ids,
+                // Use sample_values for the marker size
+                size: sample_values,
+                colorscale: 'Picnic'
+            }
         }];
 
 
+        // Define plot layout
+        var bubble_layout = {
+            title: `All Bacteria IDs in Subject ${subjectID} by Sample Values`,
+            xaxis: { title: "OTU IDs" },
+            yaxis: { title: "Sample Values" }
+        };
 
         // Display plot
         Plotly.newPlot("bubble", bubble_data, bubble_layout)
@@ -56,7 +85,7 @@ function displayDemoInfo(subjectID) {
 
         var metadataFilter = metadata.filter(bacteriaData => bacteriaData.id == subjectID)[0]
         
-       
+        demoInfoBox.html("");
 
         Object.entries(metadataFilter).forEach(([key, value]) => {
             demoInfoBox.append("p").text(`${key}: ${value}`)
