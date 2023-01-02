@@ -2,7 +2,7 @@
 function charts(subjectID) {
 
     // use d3 library to read in samples.json
-    d3.json("./data/samples.json").then(data => {
+    d3.json("./samples.json").then(data => {
         // test to see all data from url worked
         console.log(data);
 
