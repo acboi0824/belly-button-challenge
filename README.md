@@ -24,8 +24,5 @@ The Dashboard should include:
 
 ![bubble](https://github.com/acboi0824/belly-button-challenge/blob/main/Images/bubble.PNG)
 
-## Finished Product and link
-[https://acboi0824.github.io/belly-button-challenge/](https://acboi0824.github.io/belly-button-challenge/)
-
 
 © 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
